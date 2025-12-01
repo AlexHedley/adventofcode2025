@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# logs
+*/debug.log
+
+# Don't include the inputs
+*/input.txt

@@ -31,7 +31,7 @@ Key: \* Both | ■ One | ° None |
 
 ## Solutions
 
-<!-- - [Day 1](day01/README.md) -->
+- [Day 1](day01/README.md)
 <!-- - [Day 2](day02/README.md) -->
 <!-- - [Day 3](day03/README.md) -->
 <!-- - [Day 4](day04/README.md) -->
