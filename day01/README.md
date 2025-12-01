@@ -6,7 +6,7 @@ Output from [input.txt](day01/input.txt).
 
 **Part 1**
 
-> ~~296~~
+> 1043 ~~296~~
 
 **Part 2**
 

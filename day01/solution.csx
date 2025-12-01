@@ -5,6 +5,7 @@ public class Day1
     bool logToConsole = true;
     bool logToFile = true;
 
+    // var startingNumber = 50;
     long max = 99L;
     long zeroCount = 0;
 
@@ -12,7 +13,6 @@ public class Day1
 
     public void Part1(string[] lines)
     {
-        // var startingNumber = 50;
         var currentNumber = 50L;
         
         foreach (var line in lines)
@@ -21,10 +21,13 @@ public class Day1
             // Console.WriteLine(item.direction);
             // Console.WriteLine(item.turns);
 
-            currentNumber = UpdateDial(currentNumber, item.direction, item.turns);
+            // currentNumber = UpdateDial(currentNumber, item.direction, item.turns);
+            // Utils.Log($"currentNumber: {currentNumber}", logToConsole, logToFile);
+            // if (currentNumber == 0) zeroCount++;
 
-            Utils.Log($"currentNumber: {currentNumber}", logToConsole, logToFile);
-            if (currentNumber == 0) zeroCount++;
+            if (item.direction == "R") currentNumber += item.turns;
+            if (item.direction == "L") currentNumber -= item.turns;
+            if (currentNumber % 100 == 0) zeroCount++;
         }
 
         Utils.Answer($"{zeroCount}", logToConsole, logToFile);
@@ -36,11 +39,6 @@ public class Day1
 
         Utils.Log($"Current Position: {currentPosition} | Direction: {direction} | Rotation: {rotation}", logToConsole, logToFile);
         
-        // if (rotation > max)
-        // {
-        //      rotation / max
-        // }
-
         switch (direction)
         {
             case "L":
@@ -81,8 +79,8 @@ Utils.Log("-----------", true, true);
 
 var day = new Day1();
 
-string fileName = @"input-sample.txt";
-// string fileName = @"input.txt";
+// string fileName = @"input-sample.txt";
+string fileName = @"input.txt";
 var lines = Utils.GetLines(fileName);
 
 // Part 1
