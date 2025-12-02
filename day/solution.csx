@@ -19,6 +19,7 @@ public class Day
 
 Utils.Log("-- Day # --", true, true);
 Utils.Log("-----------", true, true);
+Utils.Log($"{DateTime.Now}", true, true);
 
 var day = new Day();
 
@@ -33,6 +34,8 @@ day.Part1(lines);
 // Part 2
 // Utils.Log("Part 2", true, true);
 // day.Part2(lines);
+
+Utils.Log($"{DateTime.Now}", true, true);
 
 Console.Beep();
 

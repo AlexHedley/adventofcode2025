@@ -142,6 +142,7 @@ public class Day
 
 Utils.Log("-- Day 2 --", true, true);
 Utils.Log("-----------", true, true);
+Utils.Log($"{DateTime.Now}", true, true);
 
 var day = new Day();
 
@@ -157,6 +158,7 @@ var lines = Utils.GetLines(fileName);
 Utils.Log("Part 2", true, true);
 day.Part2(lines);
 
+Utils.Log($"{DateTime.Now}", true, true);
 
 Console.Beep();
 

@@ -101,6 +101,7 @@ public class Day1
 
 Utils.Log("-- Day 1 --", true, true);
 Utils.Log("-----------", true, true);
+Utils.Log($"{DateTime.Now}", true, true);
 
 var day = new Day1();
 
@@ -115,6 +116,8 @@ var lines = Utils.GetLines(fileName);
 // Part 2
 Utils.Log("Part 2", true, true);
 day.Part2(lines);
+
+Utils.Log($"{DateTime.Now}", true, true);
 
 Console.Beep();
 
