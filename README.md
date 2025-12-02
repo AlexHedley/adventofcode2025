@@ -20,14 +20,14 @@ Previous Years: https://github.com/AlexHedley/adventofcode (https://alexhedley.g
 ```bash
     |     |                   1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2
     |     | 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
-  5 |  22 | ■ ■ ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° | 1
+  5 |  35 | ■ * ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° | 3
 ```
 
 Key: \* Both | ■ One | ° None |
 
 | Silver ■ | Gold ⭐ |
 | -------- | ------- |
-| 1        | 0       |
+| 1        | 1       |
 
 ## Solutions
 

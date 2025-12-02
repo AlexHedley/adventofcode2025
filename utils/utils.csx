@@ -298,6 +298,18 @@ public static class Utils
         return Enumerable.Range(x.Lower, x.Upper - x.Lower + 1).ToList();
     }
 
+    // Day 3 - 2022
+    public static IEnumerable<string> Split(string str, int chunkSize)
+    {
+        return Enumerable.Range(0, str.Length / chunkSize)
+            .Select(i => str.Substring(i * chunkSize, chunkSize));
+    }
+
+    public static IEnumerable<string> Matching(List<string> splitLine)
+    {
+        return splitLine[0].ToCharArray().Select(c => c.ToString()).ToArray().Intersect<string>(splitLine[1].ToCharArray().Select(c => c.ToString()).ToArray());
+    }
+
     public static void PrintRange(List<int> range, bool toConsole = false, bool toFile = false)
     {
         string printOut = "";
