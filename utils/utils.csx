@@ -248,6 +248,13 @@ public static class Utils
         return Enumerable.Range(lower, upper-lower+1).ToList();
     }
 
+    // public static List<long> BoundsRange(long lower, long upper)
+    // {
+    //     if (lower > upper)
+    //         return Enumerable.Range(upper, lower-upper+1).ToList();
+    //     return Enumerable.Range(lower, upper-lower+1).ToList();
+    // }
+
     public static List<long> CreateList(long lower, long numberOfItems)
     {
         var items = new List<long>();
