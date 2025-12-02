@@ -18,8 +18,7 @@ public class Day1
         foreach (var line in lines)
         {
             (string direction, long turns) item = (line.Substring(0, 1), long.Parse(line.Substring(1)));
-            // Console.WriteLine(item.direction);
-            // Console.WriteLine(item.turns);
+            // Utils.Log($"{item.direction} | {item.turns}", logToConsole, logToFile);
 
             // currentNumber = UpdateDial(currentNumber, item.direction, item.turns);
             // Utils.Log($"currentNumber: {currentNumber}", logToConsole, logToFile);
@@ -28,6 +27,36 @@ public class Day1
             if (item.direction == "R") currentNumber += item.turns;
             if (item.direction == "L") currentNumber -= item.turns;
             if (currentNumber % 100 == 0) zeroCount++;
+        }
+
+        Utils.Answer($"{zeroCount}", logToConsole, logToFile);
+    }
+
+    public void Part2(string[] lines)
+    {   
+        var currentNumber = 50L;
+        var zeroCount = 0L;
+
+        foreach (var line in lines)
+        {
+            (string direction, long turns) item = (line.Substring(0, 1), long.Parse(line.Substring(1)));
+            // Utils.Log($"{item.direction} | {item.turns}", logToConsole, logToFile);
+
+            if (item.direction == "R")
+            {
+                // currentNumber += item.turns;
+                // currentNumber % 100 | currentNumber / 100
+                currentNumber += item.turns % max;
+            }
+            if (item.direction == "L")
+            {
+                // currentNumber -= item.turns;
+                currentNumber -= item.turns % max;
+            }
+
+            zeroCount += item.turns / max;
+            
+            if (currentNumber == 0) zeroCount++;
         }
 
         Utils.Answer($"{zeroCount}", logToConsole, logToFile);
@@ -68,10 +97,6 @@ public class Day1
 
         return position;
     }
-
-    // public void Part2(string[] lines)
-    // {
-    // }
 }
 
 Utils.Log("-- Day 1 --", true, true);
@@ -84,14 +109,14 @@ string fileName = @"input.txt";
 var lines = Utils.GetLines(fileName);
 
 // Part 1
-Utils.Log("Part 1", true, true);
-day.Part1(lines);
+// Utils.Log("Part 1", true, true);
+// day.Part1(lines);
 
 // Part 2
-// Utils.Log("Part 2", true, true);
-// day.Part2(lines);
+Utils.Log("Part 2", true, true);
+day.Part2(lines);
 
 Console.Beep();
 
 Console.WriteLine("Press any key to exit.");
-System.Console.ReadKey();
+Console.ReadLine();

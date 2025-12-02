@@ -10,7 +10,7 @@ Output from [input.txt](day01/input.txt).
 
 **Part 2**
 
-> 
+> ~~4005~~
 
 ---
 
