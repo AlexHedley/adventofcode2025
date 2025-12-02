@@ -3,6 +3,7 @@
 - [Leaderboard - Self](https://adventofcode.com/2025/leaderboard/self)
 
 Day   -Part 1-   -Part 2-
+  2   04:03:18          -
   1   06:39:40          -
 
 <!-- 

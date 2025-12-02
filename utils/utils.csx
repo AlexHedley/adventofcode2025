@@ -255,6 +255,29 @@ public static class Utils
     //     return Enumerable.Range(lower, upper-lower+1).ToList();
     // }
 
+    public static List<long> BuildLongList(long start, long end)
+    {
+        var list = new List<long>();
+
+        // Handle both ascending and descending ranges
+        if (start <= end)
+        {
+            for (long i = start; i <= end; i++)
+            {
+                list.Add(i);
+            }
+        }
+        else
+        {
+            for (long i = start; i >= end; i--)
+            {
+                list.Add(i);
+            }
+        }
+
+        return list;
+    }
+
     public static List<long> CreateList(long lower, long numberOfItems)
     {
         var items = new List<long>();

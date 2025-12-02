@@ -15,7 +15,7 @@ public class Day
             var items = line.Split(",", StringSplitOptions.TrimEntries);
             foreach(var item in items)
             {
-                (int lhs, int rhs) id = item.Split("-", StringSplitOptions.TrimEntries) switch { var n => ( int.Parse(n[0]), int.Parse(n[1]) ) };
+                (long lhs, long rhs) id = item.Split("-", StringSplitOptions.TrimEntries) switch { var n => ( long.Parse(n[0]), long.Parse(n[1]) ) };
                 Utils.Log($"{id.rhs} | {id.lhs}", logToConsole, logToFile);
 
                 // var matchingLHS = CheckNumber(id.lhs);
@@ -23,7 +23,7 @@ public class Day
                 // var matchingRHS = CheckNumber(id.rhs);
                 // if (matchingRHS) invalidItems.Add(id.rhs);
 
-                var range = Utils.BoundsRange(id.lhs, id.rhs);
+                var range = Utils.BuildLongList(id.lhs, id.rhs);
                 // range.ForEach(Console.WriteLine);
                 CheckNumbers(range);
             }
@@ -33,7 +33,7 @@ public class Day
         Utils.Answer($"{total}", logToConsole, logToFile);
     }
 
-    public void CheckNumbers(List<int> numbers)
+    public void CheckNumbers(List<long> numbers)
     {
         foreach(var number in numbers)
         {
