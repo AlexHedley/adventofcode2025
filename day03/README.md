@@ -3,11 +3,11 @@
 - [Puzzle](PUZZLE.md)
 
 Output from [input.txt](input.txt).
-<!-- Output from [input.txt](day#/input.txt). -->
+<!-- Output from [input.txt](day03/input.txt). -->
 
 **Part 1**
 
-> 
+> 17443
 
 **Part 2**
 
