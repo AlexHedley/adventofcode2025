@@ -22,17 +22,36 @@ public class Day4
 
         FindRolls(matrix);
         // Update Matrix with rollCoordinates.
-        // Utils.PrintMatrix(matrix, logToConsole, logToFile);
+        UpdateMap(matrix, rollCoordinates);
+        Utils.PrintMatrix(matrix, logToConsole, logToFile);
 
         Utils.Answer($"{rolls}", logToConsole, logToFile);
     }
 
-    // public void Part2(string[] lines)
-    // {
-    // }
-
-    public void FindRolls(string[,] matrix)
+    public void Part2(string[] lines)
     {
+        var rows = lines.Length;
+        var cols = lines[0].Length;
+
+        var matrix = Utils.GenerateMatrix<string>(lines, rows, cols);
+        Utils.PrintMatrix(matrix, logToConsole, logToFile);
+
+        var toUpdate = true;
+        while (toUpdate)
+        {
+            toUpdate = FindRolls(matrix);
+            // Update Matrix with rollCoordinates.
+            UpdateMap(matrix, rollCoordinates);
+            Utils.PrintMatrix(matrix, logToConsole, logToFile);
+        }
+        
+        Utils.Answer($"{rolls}", logToConsole, logToFile);
+    }
+
+    public bool FindRolls(string[,] matrix)
+    {
+        var updated = false;
+
         int rowLength = matrix.GetLength(0);
         int colLength = matrix.GetLength(1);
 
@@ -42,27 +61,30 @@ public class Day4
             {
                 if (matrix[i, j] == "@")
                 {
-                    // var adjecentPositions = Utils.GetAdjacentPositions(matrix, i, j, true, true);
-                    // Utils.Info($"{adjecentPositions.Count}", logToConsole, logToFile);
-                    // foreach (var adjecentPosition in adjecentPositions)
-                    // {
-                    //     Utils.Info($"{adjecentPosition.Item1}, {adjecentPosition.Item2}", logToConsole, logToFile);
-                    // }
                     var adjacents = Utils.GetAdjacents(matrix, i, j, false, false);
                     // Utils.Info(string.Join(" ", adjacents), logToConsole, logToFile);
                     if (adjacents.Count(r => r == "@") < 4) 
                     {
                         Utils.Log($"{i}:{j} = {matrix[i, j]}", logToConsole, logToFile);
                         rollCoordinates.Add(Tuple.Create(i, j));
+                        updated = true;
 
                         rolls++;
                     }
                 }
             }
         }
+
+        return updated;
     }
 
-    // Tuple<int, int>
+    public void UpdateMap(string[,] matrix, List<Tuple<int, int>> rollCoordinates)
+    {
+        foreach (var rollCoordinate in rollCoordinates)
+        {
+            Utils.UpdatePosition(matrix, rollCoordinate.Item1, rollCoordinate.Item2, "x");
+        }
+    }
 }
 
 Utils.Log("-- Day 4 --", true, true);
@@ -76,12 +98,12 @@ string fileName = @"input.txt";
 var lines = Utils.GetLines(fileName);
 
 // Part 1
-Utils.Log("Part 1", true, true);
-day.Part1(lines);
+// Utils.Log("Part 1", true, true);
+// day.Part1(lines);
 
 // Part 2
-// Utils.Log("Part 2", true, true);
-// day.Part2(lines);
+Utils.Log("Part 2", true, true);
+day.Part2(lines);
 
 Utils.Log($"{DateTime.Now}", true, true);
 
