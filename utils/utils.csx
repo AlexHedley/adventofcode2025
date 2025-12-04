@@ -120,85 +120,170 @@ public static class Utils
                 .ToArray();
     }
 
-    // /// <summary>
-    // /// Get Adjacents
-    // ///   T R B L | TR TL BR BL
-    // /// </summary>
-    // /// <param name="matrix">the matrix containing your data.</param>
-    // /// <param name="i">The row of the current cell you wish to check</param>
-    // /// <param name="j">The col of the current cell you wish to check</param>
-    // /// <example>
-    // /// <code>
-    // /// var adjacents = GetAdjacents(matrix, 1, 2);
-    // /// </code>
-    // /// </example>
-    // /// <returns>A list of adjacent values</returns>
-    // public static List<string> GetAdjacents<T>(T[,] matrix, int i, int j)
-    // {
-    //     int rowLength = matrix.GetLength(0);
-    //     int colLength = matrix.GetLength(1);
+    /// <summary>
+    /// Get Adjacents
+    ///   T R B L | TR TL BR BL
+    /// </summary>
+    /// <param name="matrix">the matrix containing your data.</param>
+    /// <param name="i">The row of the current cell you wish to check</param>
+    /// <param name="j">The col of the current cell you wish to check</param>
+    /// <example>
+    /// <code>
+    /// var adjacents = GetAdjacents(matrix, 1, 2);
+    /// </code>
+    /// </example>
+    /// <returns>A list of adjacent values</returns>
+    public static List<string> GetAdjacents(string[,] matrix, int i, int j, bool logToConsole = false, bool logToFile = false)
+    // public static List<string> GetAdjacents<T>(T[,] matrix, int i, int j, bool logToConsole = false, bool logToFile = false)
+    {
+        int rowLength = matrix.GetLength(0);
+        int colLength = matrix.GetLength(1);
 
-    //     var adjecents = new List<string>();
-    //     var top = "";
-    //     var left = "";
-    //     var bottom = "";
-    //     var right = "";
+        var adjecents = new List<string>();
+        var top = "";
+        var left = "";
+        var bottom = "";
+        var right = "";
 
-    //     // U D L R
-    //     if (i-1 > -1)
-    //     {
-    //         top = matrix[i-1, j];
-    //         adjecents.Add(top);
-    //     }
-    //     if (j-1 > -1)
-    //     {
-    //         left = matrix[i, j-1];
-    //         adjecents.Add(left);
-    //     }
-    //     if (i+1 < rowLength)
-    //     {
-    //         bottom = matrix[i+1, j];
-    //         adjecents.Add(bottom); 
-    //     }
-    //     if (j+1 < colLength)
-    //     {
-    //         right = matrix[i, j+1];
-    //         adjecents.Add(right);
-    //     }
+        // U D L R
+        if (i-1 > -1)
+        {
+            top = matrix[i-1, j];
+            adjecents.Add(top);
+        }
+        if (j-1 > -1)
+        {
+            left = matrix[i, j-1];
+            adjecents.Add(left);
+        }
+        if (i+1 < rowLength)
+        {
+            bottom = matrix[i+1, j];
+            adjecents.Add(bottom); 
+        }
+        if (j+1 < colLength)
+        {
+            right = matrix[i, j+1];
+            adjecents.Add(right);
+        }
 
-    //     Log($"T:{top} | L:{left} | B:{bottom} | R:{right}", true, true);
+        Utils.Log($"T:{top} | L:{left} | B:{bottom} | R:{right}", logToConsole, logToFile);
 
-    //     var topLeft = "";
-    //     var topRight = "";
-    //     var bottomLeft = "";
-    //     var bottomRight = "";
+        var topLeft = "";
+        var topRight = "";
+        var bottomLeft = "";
+        var bottomRight = "";
 
-    //     // Diagonals
-    //     if (i-1 > -1 && j-1 > -1)
-    //     {
-    //         topLeft = matrix[i-1, j-1];
-    //         adjecents.Add(topLeft);
-    //     }
-    //     if (i+1 < rowLength && j-1 > -1)
-    //     {
-    //         bottomLeft = matrix[i+1, j-1];
-    //         adjecents.Add(bottomLeft);
-    //     }
-    //     if (i-1 > -1 && j+1 < colLength)
-    //     {
-    //         topRight = matrix[i-1, j+1];
-    //         adjecents.Add(topRight); 
-    //     }
-    //     if (i+1 < rowLength && j+1 < colLength)
-    //     {
-    //         bottomRight = matrix[i+1, j+1];
-    //         adjecents.Add(bottomRight);
-    //     }
+        // Diagonals
+        if (i-1 > -1 && j-1 > -1)
+        {
+            topLeft = matrix[i-1, j-1];
+            adjecents.Add(topLeft);
+        }
+        if (i+1 < rowLength && j-1 > -1)
+        {
+            bottomLeft = matrix[i+1, j-1];
+            adjecents.Add(bottomLeft);
+        }
+        if (i-1 > -1 && j+1 < colLength)
+        {
+            topRight = matrix[i-1, j+1];
+            adjecents.Add(topRight); 
+        }
+        if (i+1 < rowLength && j+1 < colLength)
+        {
+            bottomRight = matrix[i+1, j+1];
+            adjecents.Add(bottomRight);
+        }
 
-    //     Log($"TR:{topRight} | TL:{topLeft} | BR:{bottomRight} | BL:{bottomLeft}", true, true);
+        Utils.Log($"TR:{topRight} | TL:{topLeft} | BR:{bottomRight} | BL:{bottomLeft}", logToConsole, logToFile);
 
-    //     return adjecents;
-    // }
+        return adjecents;
+    }
+
+    // Day 3 - 2023
+    public static List<(int, int)> GetAdjacentPositions(string[,] matrix, int i, int j, bool logToConsole = false, bool logToFile = false)
+    {
+        int rowLength = matrix.GetLength(0);
+        int colLength = matrix.GetLength(1);
+
+        var adjecents = new List<(int, int)>();
+        var top = "";
+        var left = "";
+        var bottom = "";
+        var right = "";
+
+        // U D L R
+        if (i-1 > -1)
+        {
+            top = matrix[i-1, j];
+            var isNumeric = long.TryParse(top, out _);
+            if (isNumeric)
+                adjecents.Add((i-1, j));
+        }
+        if (j-1 > -1)
+        {
+            left = matrix[i, j-1];
+            var isNumeric = long.TryParse(left, out _);
+            if (isNumeric)
+                adjecents.Add((i, j-1));
+        }
+        if (i+1 < rowLength)
+        {
+            bottom = matrix[i+1, j];
+            var isNumeric = long.TryParse(bottom, out _);
+            if (isNumeric)
+                adjecents.Add((i+1, j)); 
+        }
+        if (j+1 < colLength)
+        {
+            right = matrix[i, j+1];
+            var isNumeric = long.TryParse(right, out _);
+            if (isNumeric)
+                adjecents.Add((i, j+1));
+        }
+
+        Utils.Log($"T:{top} | L:{left} | B:{bottom} | R:{right}", logToConsole, logToFile);
+
+        var topLeft = "";
+        var topRight = "";
+        var bottomLeft = "";
+        var bottomRight = "";
+
+        // Diagonals
+        if (i-1 > -1 && j-1 > -1)
+        {
+            topLeft = matrix[i-1, j-1];
+            var isNumeric = long.TryParse(topLeft, out _);
+            if (isNumeric)
+                adjecents.Add((i-1, j-1));
+        }
+        if (i+1 < rowLength && j-1 > -1)
+        {
+            bottomLeft = matrix[i+1, j-1];
+            var isNumeric = long.TryParse(bottomLeft, out _);
+            if (isNumeric)
+                adjecents.Add((i+1, j-1));
+        }
+        if (i-1 > -1 && j+1 < colLength)
+        {
+            topRight = matrix[i-1, j+1];
+            var isNumeric = long.TryParse(topRight, out _);
+            if (isNumeric)
+                adjecents.Add((i-1, j+1)); 
+        }
+        if (i+1 < rowLength && j+1 < colLength)
+        {
+            bottomRight = matrix[i+1, j+1];
+            var isNumeric = long.TryParse(bottomRight, out _);
+            if (isNumeric)
+                adjecents.Add((i+1, j+1));
+        }
+
+        Utils.Log($"TR:{topRight} | TL:{topLeft} | BR:{bottomRight} | BL:{bottomLeft}", logToConsole, logToFile);
+
+        return adjecents;
+    }
 
     // https://stackoverflow.com/a/3261006
     public static Tuple<int, int> CoordinatesOf<T>(T[,] matrix, T value)
