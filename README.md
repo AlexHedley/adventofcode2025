@@ -36,7 +36,7 @@ Key: \* Both | ■ One | ° None |
 - [Day 3](day03/README.md)
 - [Day 4](day04/README.md)
 - [Day 5](day05/README.md)
-<!-- - [Day 6](day06/README.md) -->
+- [Day 6](day06/README.md)
 <!-- - [Day 7](day07/README.md) -->
 <!-- - [Day 8](day08/README.md) -->
 <!-- - [Day 9](day09/README.md) -->
